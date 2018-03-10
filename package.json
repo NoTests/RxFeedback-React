@@ -1,0 +1,35 @@
+{
+  "name": "rxfeedback-react",
+  "version": "0.0.1",
+  "description": "RxFeedback.js React extensions",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "(rm -rf dist || true) && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NoTests/RxFeedback-React.git"
+  },
+  "keywords": [
+    "rxjs",
+    "rxfeedback",
+    "architecture",
+    "redux"
+  ],
+  "author": "Krunoslav Zaher <krunoslav.zaher@gmail.com> (http://twitter.com/krunoslav.zaher)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NoTests/RxFeedback-React/issues"
+  },
+  "homepage": "https://github.com/NoTests/RxFeedback-React#readme",
+  "devDependencies": {
+    "@types/react": "^16.0.40",
+    "typescript": "^2.7.2"
+  },
+  "dependencies": {
+    "rxfeedback": "^0.0.5",
+    "react": "^16.2.0"
+  },
+  "typings": "./dist/index.d.ts"
+}
