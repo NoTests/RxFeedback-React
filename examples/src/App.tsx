@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as rx from 'rxjs';
 import * as rxf from 'rxfeedback';
 import * as rxfr from './rxfeedback+react';
+import { map, catchError } from 'rxjs/operators';
 
 namespace CounterExample1 {
     type State = {
@@ -29,7 +30,7 @@ namespace CounterExample1 {
     export class Component extends rxfr.RootComponent<{}, State, Event> {
         constructor(props: {}) {
             const factory: rxfr.ReactFactory<State, Event> = (uiFeedback): rx.Observable<State> => {
-              return rx.Observable.system(
+              return rxf.system(
                 initialState,
                 reduce,
                 [
@@ -169,8 +170,8 @@ namespace GithubPaginatedSearchExample2 {
                         const query = q.link 
                             ? api.getNextPage(q.link)
                             : api.search.repos({ q: q.search });
-                        return rx.Observable.from(query)
-                            .map((repos: GitHubApi.AnyResponse): Event => {
+                        return rx.from(query).pipe(
+                            map((repos: GitHubApi.AnyResponse): Event => {
                                 return {
                                     kind: 'Response',
                                     response: {
@@ -180,8 +181,8 @@ namespace GithubPaginatedSearchExample2 {
                                         nextURL: repos.meta
                                     }
                                 };
-                            })
-                            .catch((error: Error): rx.Observable<Event> => {
+                            }),
+                            catchError((error: Error): rx.Observable<Event> => {
                                 const event: Event = {
                                     kind: 'Response',
                                     response: {
@@ -189,13 +190,14 @@ namespace GithubPaginatedSearchExample2 {
                                         error: (error || 'unknown').toString()
                                     }
                                 };
-                                return rx.Observable.of(event);
-                            });
+                                return rx.of(event);
+                            })
+                        );
                     },
                     rxf.defaultRetryStrategy()
                 );
 
-                return rx.Observable.system(
+                return rxf.system(
                     initialState,
                     reduce,
                     [

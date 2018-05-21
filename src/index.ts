@@ -1,6 +1,7 @@
 import * as rx from 'rxjs';
 import * as rxf from 'rxfeedback';
 import * as React from 'react';
+import { observeOn, subscribeOn } from 'rxjs/operators';
 
 export type Callback<Event> = (event: Event) => void;
 
@@ -36,7 +37,7 @@ export class RootComponent<Props, State, Event> extends React.Component<Props, {
         let reactFeedbackLoopFactory: ReactFeedbackLoopFactory<State, Event> = 
             (adapter): rxf.FeedbackLoop<State, Event> => {
                 return (state: rx.Observable<State>, scheduler): rx.Observable<Event> => {
-                    return rx.Observable.using(
+                    return rx.using(
                         () => {
                             const events = new rx.Subject<Event>();
                             const subscription = state.subscribe(
@@ -53,7 +54,10 @@ export class RootComponent<Props, State, Event> extends React.Component<Props, {
                         (binding: Binding<Event>) => {
                             return binding.events;
                         }
-                    ).observeOn(scheduler).subscribeOn(scheduler);
+                    ).pipe(
+                        observeOn(scheduler),
+                        subscribeOn(scheduler)
+                    );
                 };
             };
 
