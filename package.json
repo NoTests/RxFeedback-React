@@ -1,6 +1,6 @@
 {
   "name": "rxfeedback-react",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "RxFeedback.js React extensions",
   "main": "dist/index.js",
   "scripts": {
@@ -11,6 +11,10 @@
     "type": "git",
     "url": "git+https://github.com/NoTests/RxFeedback-React.git"
   },
+  "files": [
+    "dist/",
+    "LICENSE"
+  ],
   "keywords": [
     "rxjs",
     "rxfeedback",
