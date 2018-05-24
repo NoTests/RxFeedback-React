@@ -1,6 +1,6 @@
 {
   "name": "rxfeedback-react",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "RxFeedback.js React extensions",
   "main": "dist/index.js",
   "scripts": {
@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "react": "^16.2.0",
-    "rxfeedback": "^0.0.13"
+    "rxfeedback": "^1.0.0"
   },
   "typings": "./dist/index.d.ts"
 }
