@@ -178,7 +178,8 @@ namespace GithubPaginatedSearchExample2 {
                                         kind: 'Success',
                                         // tslint:disable-next-line:no-string-literal
                                         repositories: repos.data['items'] as Repository[],
-                                        nextURL: repos.meta
+                                        // tslint:disable-next-line:no-string-literal
+                                        nextURL: repos['meta'] as string
                                     }
                                 };
                             }),

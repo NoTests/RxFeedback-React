@@ -25,16 +25,17 @@
   },
   "homepage": "https://github.com/NoTests/RxFeedback-React#readme",
   "devDependencies": {
-    "@types/react": "^16.0.40",
-    "react-scripts-ts": "2.13.0",
-    "typescript": "^2.7.2",
-    "@types/react-dom": "^16.0.4"
+    "@types/node": "^10.12.21",
+    "@types/react": "*",
+    "@types/react-dom": "*",
+    "react-scripts-ts": "*",
+    "typescript": "*"
   },
   "dependencies": {
     "@octokit/rest": "^15.1.9",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "rxfeedback": "0.0.13"
+    "react": "*",
+    "react-dom": "*",
+    "rxfeedback": "2"
   },
   "typings": "./dist/index.d.ts"
 }
