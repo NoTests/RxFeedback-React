@@ -1,6 +1,6 @@
 {
   "name": "rxfeedback-react",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "RxFeedback.js React extensions",
   "main": "dist/index.js",
   "scripts": {

@@ -40,9 +40,10 @@ export class RootComponent<Props, State, Event> extends React.Component<Props, {
                     return rx.using(
                         () => {
                             const events = new rx.Subject<Event>();
+                            const sendEvent = events.next.bind(events);
                             const subscription = state.subscribe(
                                 (x) => {
-                                    const view = adapter(x, events.next.bind(events));
+                                    const view = adapter(x, sendEvent);
                                     this.setState(view as {});
                                 }, 
                                 events.error, 
